@@ -9,14 +9,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Conference;
 use App\Entity\Comment;
+use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
 
 class DashboardController extends AbstractDashboardController
 {
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        return parent::index();
+        $routeBuilder = $this->get(CrudUrlGenerator::class)->build();
+        $url = $routeBuilder->setController(ConferenceCrudController::class)->generateUrl();
         
+        return $this->redirect($url);
     }
 
     public function configureDashboard(): Dashboard
