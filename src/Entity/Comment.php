@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 /**
  * @ORM\Entity(repositoryClass=CommentRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Comment
 {
@@ -108,7 +109,7 @@ class Comment
     }
 
     /**
-     * @ORM\Prepersist
+     * @ORM\PrePersist
      */
     public function setCreatedAtValue()
     {
