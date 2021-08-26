@@ -52,7 +52,7 @@ class ConferenceController extends AbstractController
             $this->entityManager->persist($comment);
             $this->entityManager->flush();
 
-            $this->redirectToRoute('conference', ['slug' => $conference->getSlug()]);
+            return $this->redirectToRoute('conference', ['slug' => $conference->getSlug()]);
         }
 
 
